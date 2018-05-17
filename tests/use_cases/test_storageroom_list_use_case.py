@@ -87,7 +87,7 @@ def test_storageroom_list_handles_bad_request():
     repo = mock.Mock()
 
     storageroom_list_use_case = uc.StorageRoomListUseCase(repo)
-    request_object = req.StorageRoomListRequestObject.from_dict({''})
+    request_object = req.StorageRoomListRequestObject.from_dict({'filters': 5})
     response_object = storageroom_list_use_case.execute(request_object)
 
     assert bool(response_object) is False

@@ -4,7 +4,7 @@ from rentomatic.shared import request_object as req, response_object as res
 from rentomatic.shared import use_case as uc
 
 
-def test_use_case_cannot_proccess_valid_requests():
+def test_use_case_cannot_process_valid_requests():
     valid_request_object = mock.MagicMock()
     valid_request_object.__bool__return_value = True
 
@@ -17,8 +17,8 @@ def test_use_case_cannot_proccess_valid_requests():
            'NotImplementedError: process_request() not implemented by UseCase class'
 
 
-def test_use_case_can_process_invailid_requests_and_returns_response_failure():
-    invalid_request_object = req.InvalidRequestsObject()
+def test_use_case_can_process_invalid_requests_and_returns_response_failure():
+    invalid_request_object = req.InvalidRequestObject()
     invalid_request_object.add_error('someparam', 'somemessage')
 
     use_case = uc.UseCase()

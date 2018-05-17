@@ -1,7 +1,6 @@
 import pytest
 
-from rentomatic.shared import response_object as res
-from rentomatic.use_cases import request_objects as req
+from rentomatic.shared import response_object as res, request_object as req
 
 
 @pytest.fixture
@@ -23,7 +22,7 @@ def test_response_success_is_true(response_value):
     assert bool(res.ResponseSuccess(response_value)) is True
 
 
-def test_response_failure_is_false(response_type, reponse_message):
+def test_response_failure_is_false(response_type, response_message):
     assert bool(res.ResponseFailure(response_type, response_message)) is False
 
 
@@ -46,7 +45,7 @@ def test_response_failure_contains_value(response_type, response_message):
     assert response.value == {'type': response_type, 'message': response_message}
 
 
-def test_response_failure_initiliziation_with_exception():
+def test_response_failure_initialization_with_exception():
     response = res.ResponseFailure(response_type, Exception('Just an error message'))
 
     assert bool(response) is False
@@ -55,7 +54,7 @@ def test_response_failure_initiliziation_with_exception():
 
 
 def test_response_failure_from_invalid_request_object():
-    response = res.ResponseFailure.build_from_invalid_request_object(req.InvalidRequestObject)
+    response = res.ResponseFailure.build_from_invalid_request_object(req.InvalidRequestObject())
 
     assert bool(response) is False
 

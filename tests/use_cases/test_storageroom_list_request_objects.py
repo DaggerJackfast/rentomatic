@@ -1,14 +1,7 @@
-import pytest
-
 from rentomatic.use_cases import request_objects as ro
 
 
-def test_valid_request_object_cannot_be_used():
-    with pytest.raises(NotImplementedError):
-        ro.ValidRequestObject.from_dict({})
-
-
-def test_build_storage_room_list_requiest_object_without_parameters():
+def test_build_storage_room_list_request_object_without_parameters():
     req = ro.StorageRoomListRequestObject()
 
     assert req.filters is None

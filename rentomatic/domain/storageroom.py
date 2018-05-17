@@ -7,8 +7,8 @@ class StorageRoom(object):
         self.code = code
         self.size = size
         self.price = price
-        self.latitude = latitude
-        self.longitute = longitude
+        self.latitude = float(latitude)
+        self.longitude = float(longitude)
 
     @classmethod
     def from_dict(cls, adict):

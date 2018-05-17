@@ -30,4 +30,5 @@ class MemRepo:
 
         for key, value in filters.items():
             result = [e for e in result if self._check(e, key, value)]
+
         return [sr.StorageRoom.from_dict(r) for r in result]

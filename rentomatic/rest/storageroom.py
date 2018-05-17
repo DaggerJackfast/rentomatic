@@ -2,10 +2,10 @@ import json
 from flask import Blueprint, Response, request
 
 from rentomatic.use_cases import request_objects as req
+from rentomatic.shared import response_object as res
 from rentomatic.repository import memrepo as mr
 from rentomatic.use_cases import storageroom_use_cases as uc
 from rentomatic.serializers import storageroom_serializer as ser
-from rentomatic.shared import response_object as res
 
 blueprint = Blueprint('storageroom', __name__)
 

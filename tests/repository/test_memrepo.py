@@ -36,7 +36,6 @@ storageroom4 = {
     'latitude': '51.39916678',
 }
 
-
 @pytest.fixture
 def storagerooms():
     return [storageroom1, storageroom2, storageroom3, storageroom4]
@@ -44,12 +43,12 @@ def storagerooms():
 
 def _check_results(domain_models_list, data_list):
     assert len(domain_models_list) == len(data_list)
-    assert all([isinstance(db, DomainModel) for dm in domain_models_list])
-    assert set([dm.code for dm in domain_models_list]) == set([d('code') for d in data_list])
+    assert all([isinstance(dm, DomainModel) for dm in domain_models_list])
+    assert set([dm.code for dm in domain_models_list]) == set([d['code'] for d in data_list])
 
 
 def test_repository_list_without_parameters(storagerooms):
-    repo = memrepo.MemRep(storagerooms)
+    repo = memrepo.MemRepo(storagerooms)
 
     assert repo.list() == storagerooms
 
@@ -74,7 +73,7 @@ def test_repository_list_with_filters_price(storagerooms):
     _check_results(repo.list(filters={'price': 60}), [storageroom3])
     _check_results(repo.list(filters={'price__eq': 60}), [storageroom3])
     _check_results(repo.list(filters={'price__lt': 60}), [storageroom1, storageroom4])
-    _check_results(repo.list(filters={'price__qt': 60}), [storageroom2])
+    _check_results(repo.list(filters={'price__gt': 60}), [storageroom2])
 
 
 def test_repository_list_with_filters_size(storagerooms):
@@ -82,8 +81,8 @@ def test_repository_list_with_filters_size(storagerooms):
 
     _check_results(repo.list(filters={'size': 93}), [storageroom4])
     _check_results(repo.list(filters={'size__eq': 93}), [storageroom4])
-    _check_results(repo.list(filters={'size__lt': 93}), [storageroom3])
-    _check_results(repo.list(filters={'size__qt': 93}), [storageroom2])
+    _check_results(repo.list(filters={'size__lt': 60}), [storageroom3])
+    _check_results(repo.list(filters={'size__gt': 400}), [storageroom2])
 
 
 def test_repository_list_with_filters_code(storagerooms):
