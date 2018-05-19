@@ -17,7 +17,7 @@ class StorageRoom(object):
             size=adict['size'],
             price=adict['price'],
             latitude=adict['latitude'],
-            longitude=adict['longitude']
+            longitude=adict['longitude'],
         )
 
         return room

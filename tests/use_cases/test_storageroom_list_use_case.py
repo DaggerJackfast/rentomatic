@@ -14,7 +14,7 @@ def domain_storagerooms():
         size=215,
         price=39,
         longitude='-0.09998975',
-        latitude='51.75436293'
+        latitude='51.75436293',
     )
 
     storageroom_2 = StorageRoom(
@@ -22,7 +22,7 @@ def domain_storagerooms():
         size=405,
         price=66,
         longitude='0.18228006',
-        latitude='51.74640997'
+        latitude='51.74640997',
     )
 
     storageroom_3 = StorageRoom(
@@ -30,7 +30,7 @@ def domain_storagerooms():
         size=56,
         price=60,
         longitude='0.27891577',
-        latitude='51.45994069'
+        latitude='51.45994069',
     )
 
     storageroom_4 = StorageRoom(
@@ -38,7 +38,7 @@ def domain_storagerooms():
         size=93,
         price=48,
         longitude='0.33894476',
-        latitude='51.39916678'
+        latitude='51.39916678',
     )
     return [storageroom_1, storageroom_2, storageroom_3, storageroom_4]
 
@@ -56,6 +56,7 @@ def test_storageroom_list_without_parameters(domain_storagerooms):
 
     assert response_object.value == domain_storagerooms
 
+
 def test_storageroom_list_with_filters(domain_storagerooms):
     repo = mock.Mock()
     repo.list.return_value = domain_storagerooms
@@ -68,6 +69,7 @@ def test_storageroom_list_with_filters(domain_storagerooms):
     assert bool(response_object) is True
     repo.list.assert_called_with(filters=qry_filters)
     assert response_object.value == domain_storagerooms
+
 
 def test_storageroom_list_handles_generic_error():
     repo = mock.Mock()
@@ -82,6 +84,7 @@ def test_storageroom_list_handles_generic_error():
         'type': res.ResponseFailure.SYSTEM_ERROR,
         'message': 'Exception: Just an error message'
     }
+
 
 def test_storageroom_list_handles_bad_request():
     repo = mock.Mock()

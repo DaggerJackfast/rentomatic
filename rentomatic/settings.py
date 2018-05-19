@@ -21,7 +21,7 @@ class DevConfig(Config):
 
 
 class TestConfig(Config):
-    """Testing configuration."""
+    """Test configuration."""
     ENV = 'test'
     TESTING = True
     DEBUG = True

@@ -21,8 +21,6 @@ def test_serialize_domain_storageroom():
                "latitude": 51.75436293
            }
        """
-    print('expected', json.loads(expected_json))
-    print('received', json.loads(json.dumps(room, cls=srs.StorageRoomEncoder)))
     assert json.loads(json.dumps(room, cls=srs.StorageRoomEncoder)) == json.loads(expected_json)
 
 

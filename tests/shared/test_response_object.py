@@ -18,6 +18,11 @@ def response_message():
     return 'This is a response error'
 
 
+def test_valid_request_object_cannot_be_used():
+    with pytest.raises(NotImplementedError):
+        req.ValidRequestObject.from_dict({})
+
+
 def test_response_success_is_true(response_value):
     assert bool(res.ResponseSuccess(response_value)) is True
 
@@ -87,7 +92,7 @@ def test_response_failure_build_parameters_error():
     assert response.message == 'test message'
 
 
-def test_response_failure_build_sysmem_error():
+def test_response_failure_build_system_error():
     response = res.ResponseFailure.build_system_error('test message')
 
     assert bool(response) is False
