@@ -36,6 +36,7 @@ storageroom4 = {
     'latitude': '51.39916678',
 }
 
+
 @pytest.fixture
 def storagerooms():
     return [storageroom1, storageroom2, storageroom3, storageroom4]

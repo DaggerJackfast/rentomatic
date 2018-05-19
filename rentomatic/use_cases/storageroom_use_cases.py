@@ -10,5 +10,3 @@ class StorageRoomListUseCase(uc.UseCase):
     def process_request(self, request_object):
         domain_storageroom = self.repo.list(filters=request_object.filters)
         return res.ResponseSuccess(domain_storageroom)
-
-
