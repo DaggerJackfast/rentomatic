@@ -1,9 +1,9 @@
 import pytest
-
+from falcon import testing
 from rentomatic.app import create_app
-from rentomatic.settings import TestConfig
 
 
-@pytest.yield_fixture(scope='function')
-def app():
-    return create_app(TestConfig)
+# TODO : add test configuration
+@pytest.yield_fixture()
+def client():
+    return testing.TestClient(create_app())

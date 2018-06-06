@@ -1,11 +1,16 @@
-from flask import Flask
+import falcon
+from rentomatic.rest.storageroom import StorageRoom
+from rentomatic.rest.index import Index
 
-from rentomatic.rest import storageroom
-from rentomatic.settings import DevConfig
+# TODO : add auth and csrf middleware
+
+index = Index()
+storagerooms = StorageRoom()
 
 
-def create_app(config_object=DevConfig):
-    app = Flask(__name__)
-    app.config.from_object(config_object)
-    app.register_blueprint(storageroom.blueprint)
+def create_app():
+    app = falcon.API()
+
+    app.add_route('/', index)
+    app.add_route('/storagerooms', storagerooms)
     return app
