@@ -1,5 +1,6 @@
 tests
 venv
+scripts
 rentomatic.egg-info
 .vscode
 .idea
@@ -13,8 +14,6 @@ MANIFEST.in
 pytest.ini
 README.md
 README.rst
-run_tests.sh
-run_tests_with_coverage.sh
 setup.cfg
 setup.py
 tox.ini
